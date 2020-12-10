@@ -9,9 +9,10 @@ class OwnersController < ApplicationController
     erb :'/owners/new'
   end
 
-  post '/owners' do 
-    
-  end
+  post '/owners' do
+  @owner = Owner.create(params[:owner])
+  redirect "/owners/#{@owner.id}"
+end
 
   get '/owners/:id/edit' do 
     @owner = Owner.find(params[:id])
